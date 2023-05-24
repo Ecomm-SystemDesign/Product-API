@@ -2,7 +2,7 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
-const {getProducts, getProduct} = require('./controllers/controllers.js')
+const {getProducts, getProduct, putSpecificProduct} = require('./controllers/controllers.js')
 
 
 const app = express();

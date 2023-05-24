@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server-dev": "npx nodemon --watch ./server ./server/index.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "express": "^4.18.2",
     "file-loader": "^6.2.0",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.22",
     "path": "^0.12.7",
     "pg": "^8.11.0"
   }
