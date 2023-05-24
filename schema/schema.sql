@@ -29,14 +29,14 @@ CREATE TABLE styles (
   isDefault BOOLEAN NOT NULL
 );
 
-CREATE TABLE style_photos (
+CREATE TABLE photos (
   id SERIAL PRIMARY KEY NOT NULL UNIQUE,
   style_id INTEGER NOT NULL REFERENCES styles(id),
   regular_url TEXT,
   thumbnail_url TEXT
 );
 
-CREATE TABLE style_skus (
+CREATE TABLE skus (
   id SERIAL PRIMARY KEY NOT NULL UNIQUE,
   style_id INTEGER NOT NULL REFERENCES styles(id),
   quantity INTEGER NOT NULL,
@@ -49,3 +49,10 @@ CREATE TABLE related (
   related_product_id INTEGER NOT NULL
 );
 
+/*  Execute this file from the command line by typing:
+ *    mysql -u root < server/schema.sql
+ *  to create the database and the tables.
+
+  // might need to change some NOT NULLS around
+
+ */
