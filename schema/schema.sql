@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS products WITH (FORCE);
+DROP DATABASE IF EXISTS products
 
 CREATE DATABASE products;
 
@@ -17,7 +17,7 @@ CREATE TABLE features (
   id SERIAL PRIMARY KEY NOT NULL UNIQUE,
   product_id INTEGER NOT NULL REFERENCES product(id),
   feature VARCHAR(255) NOT NULL,
-  feature_value VARCHAR(255) NOT NULL
+  feature_value VARCHAR(255)
 );
 
 CREATE TABLE styles (
@@ -39,8 +39,8 @@ CREATE TABLE photos (
 CREATE TABLE skus (
   id SERIAL PRIMARY KEY NOT NULL UNIQUE,
   style_id INTEGER NOT NULL REFERENCES styles(id),
-  quantity INTEGER NOT NULL,
-  size VARCHAR(10) NOT NULL
+  size VARCHAR(10) NOT NULL,
+  quantity INTEGER NOT NULL
 );
 
 CREATE TABLE related (
@@ -49,10 +49,3 @@ CREATE TABLE related (
   related_product_id INTEGER NOT NULL
 );
 
-/*  Execute this file from the command line by typing:
- *    mysql -u root < server/schema.sql
- *  to create the database and the tables.
-
-  // might need to change some NOT NULLS around
-
- */
