@@ -14,15 +14,29 @@ module.exports = {
           return;
         }
 
-        const product = productResults.rows[0]; // productResults is an object with a row's property
+        const productRow = productResults.rows[0]; // productResults is an object with a row's property
 
         db.query(featuresQuery, [productId], (error, featuresResults) => {
           if (error) {
             reject(error);
           } else {
             console.log('success from getSingleProductFromDb')
-            const features = featuresResults.rows;
-            product.features = features; //adds the features as a property to match shape
+            const features = featuresResults.rows.map((row) => ({
+              feature: row.feature,
+              value: row.feature_value,
+            }));
+
+            //construct shape to send back to client
+            const product = {
+              id: productRow.id,
+              name: productRow.product_name,
+              description: productRow.product_description,
+              slogan: productRow.slogan,
+              category: productRow.category,
+              default_price: productRow.default_price,
+              features: features,
+            };
+
             resolve(product);
           }
         });
@@ -53,7 +67,10 @@ module.exports = {
                 return;
               }
 
-              const photos = photosResults.rows;
+              const photos = photosResults.rows.map((photo) => ({
+                thumbnail_url: photo.thumbnail_url,
+                url: photo.regular_url
+              }));
 
               db.query(skusQuery, [styleId], (error, skusResults) => {
                 if (error) {
@@ -92,6 +109,21 @@ module.exports = {
       });
     });
   },
-  getRelatedFromDb: () => {}
+
+  getRelatedFromDb: (productId) => {
+    return new Promise((resolve, reject) => {
+      const relatedQuery = 'SELECT related_product_id FROM related WHERE current_product_id = $1';
+      db.query(relatedQuery, [productId], (err, relatedResults) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+
+        const relatedProducts = relatedResults.rows.map((row) => row.related_product_id);
+        resolve(relatedProducts);
+
+      })
+    })
+  }
 
 }
