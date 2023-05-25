@@ -14,7 +14,7 @@ DELIMITER ','
 CSV HEADER;
 
 COPY photos(id, style_id, regular_url, thumbnail_url)
-FROM '/home/jerryrenn/photos.csv'
+FROM '/home/jerryrenn/cleanedPhotos.csv'
 DELIMITER ','
 CSV HEADER;
 
