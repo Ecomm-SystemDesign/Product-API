@@ -13,7 +13,9 @@ const rl = readline.createInterface({
   terminal: false,
 });
 
+//set firstLine = true to effectively ignore the first line when needed
 let isFirstLine = true;
+
 // Process each line of the input file
 rl.on('line', (line) => {
 
@@ -23,7 +25,7 @@ rl.on('line', (line) => {
     isFirstLine = false;
     return;
   }
-  
+
   // Split the line into columns
   const [id, styleId, url, thumbnailUrl] = line.split(',');
 
