@@ -17,9 +17,9 @@ app.use(router);
 
 //set up routes here
 router.get('/products', getProducts);
-router.get('/products/:productId', getProduct); // Use :productId instead of :product_id
-router.get('/products/:productId/styles', getStyles); // Use :productId instead of :product_id
-router.get('/products/:productId/related', getRelated); // Use :productId instead of :product_id
+router.get('/products/:product_id', getProduct); // Use :productId instead of :product_id
+router.get('/products/:product_id/styles', getStyles); // Use :productId instead of :product_id
+router.get('/products/:product_id/related', getRelated); // Use :productId instead of :product_id
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
