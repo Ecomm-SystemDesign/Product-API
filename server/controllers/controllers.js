@@ -13,7 +13,6 @@ module.exports = {
         res.status(404).json({ error: 'Product not found' });
         return;
       } else {
-        console.log('success from getProduct in controllers')
         res.status(200).json(product);
       }
     })
