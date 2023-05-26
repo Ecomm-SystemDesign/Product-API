@@ -17,7 +17,7 @@ const productIds = [1, 2, 3, 4, 5];
 // };
 export const options = {
   vus: 100,
-  duration: '15s'
+  duration: '30s'
 }
 
 export default function () {
