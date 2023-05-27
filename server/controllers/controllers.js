@@ -4,7 +4,31 @@ const {getAllProductsFromDb, getSingleProductFromDb, getStylesFromDb, getRelated
 
 module.exports = {
 
-  getProducts: () => {},
+  getProducts: (req, res) => {
+    let page = !isNaN(req.query.page) ? req.query.page : 1;
+    let count = !isNaN(req.query.count) ? req.query.count : 5;
+    if (page > 0 && count > 0) {
+      getAllProductsFromDb(page, count)
+      .then((response) => {
+        const modifiedResponse = response.rows.map((row) => ({
+          id: row.id,
+          name: row.product_name,
+          slogan: row.slogan,
+          description: row.product_description,
+          category: row.category,
+          default_price: `${row.default_price}` //change the price from integer to string integer
+        }));
+        res.send(modifiedResponse);
+      })
+        .catch((error) => {
+          console.log(error);
+          res.status(400).send(error);
+        });
+    } else {
+      res.status(400).send('Please provide a page/count above 0.')
+    }
+  },
+
   getProduct: (req, res) => {
     const { product_id } = req.params;
     getSingleProductFromDb(product_id)

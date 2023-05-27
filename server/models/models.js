@@ -2,7 +2,16 @@ const db = require('../database/database.js');
 
 module.exports = {
 
-  getAllProductsFromDb: () => {},
+  getAllProductsFromDb: (page, count) => {
+    const currentId = (count * (page - 1)) + 1;
+    const lastId = currentId + (count - 1);
+    const query = {
+      text: 'SELECT * FROM product WHERE id >= $1 and id <= $2',
+      values: [currentId, lastId]
+    }
+    return db.query(query);
+  },
+
   getSingleProductFromDb: (productId) => {
     return new Promise((resolve, reject) => {
       const productQuery = 'SELECT * FROM product WHERE id = $1';
