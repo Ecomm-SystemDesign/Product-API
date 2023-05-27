@@ -1,0 +1,42 @@
+//for /products endpoint
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Response contains an array of products", function () {
+    pm.expect(pm.response.json()).to.be.an('array');
+});
+
+//for /products/id endpoint
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Response contains the product details", function () {
+    pm.expect(pm.response.json()).to.have.property('id');
+    pm.expect(pm.response.json()).to.have.property('name');
+    pm.expect(pm.response.json()).to.have.property('slogan');
+    pm.expect(pm.response.json()).to.have.property('description');
+    pm.expect(pm.response.json()).to.have.property('category');
+    pm.expect(pm.response.json()).to.have.property('default_price');
+});
+
+//for /products/id/styles endpoing
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Response contains the product ID and styles", function () {
+    pm.expect(pm.response.json()).to.have.property('product_id');
+    pm.expect(pm.response.json()).to.have.property('results').that.is.an('array');
+});
+
+//for /products/id/related endpoint
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Response contains an array of related products", function () {
+    pm.expect(pm.response.json()).to.be.an('array');
+});

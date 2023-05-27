@@ -29,4 +29,4 @@ DELIMITER ','
 CSV HEADER;
 
 
-
+\copy photos(id, style_id, regular_url, thumbnail_url) FROM '/home/ubuntu/cleanedPhotos.csv' DELIMITER ',' CSV HEADER;

@@ -42,7 +42,7 @@ module.exports = {
               description: productRow.product_description,
               slogan: productRow.slogan,
               category: productRow.category,
-              default_price: productRow.default_price,
+              default_price: `${productRow.default_price}`,
               features: features,
             };
 
@@ -117,5 +117,6 @@ module.exports = {
       })
     })
   }
-
 }
+
+
