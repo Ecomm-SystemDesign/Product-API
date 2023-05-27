@@ -1,11 +1,11 @@
 config:
   target: "http://localhost:3000"
   phases:
-    - duration: 10
+    - duration: 1
       arrivalRate: 1000
 scenarios:
   - name: "Stress testing"
     flow:
       - get:
-          url: "/products/{{$randomNumber(20000,30000)}}/styles"
+          url: "/products/{{$randomNumber(1,30000)}}/related"
       - think: 1

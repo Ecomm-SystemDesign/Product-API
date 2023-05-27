@@ -46,9 +46,40 @@ module.exports = {
 
   getStylesFromDb: (productId) => {
     return new Promise((resolve, reject) => {
-      const stylesQuery = 'SELECT * FROM styles WHERE product_id = $1';
-      const photosQuery = 'SELECT regular_url, thumbnail_url FROM photos WHERE style_id = $1';
-      const skusQuery = 'SELECT * FROM skus WHERE style_id = $1';
+      const stylesQuery = `
+      SELECT
+        s.id AS style_id,
+        s.style_name AS name,
+        s.original_price,
+        s.sale_price,
+        s.isdefault AS "default?",
+        (
+          SELECT json_agg(
+            json_build_object(
+              'thumbnail_url', p.thumbnail_url,
+              'url', p.regular_url
+            )
+          )
+          FROM photos p
+          WHERE p.style_id = s.id
+        ) AS photos,
+        json_object_agg(
+          sku.id,
+          json_build_object(
+            'quantity', sku.quantity,
+            'size', sku.size
+          )
+        ) AS skus
+      FROM
+        styles s
+        JOIN skus sku ON s.id = sku.style_id
+      WHERE
+        s.product_id = $1
+      GROUP BY
+        s.id
+      ORDER BY
+        s.id ASC
+      `;
 
       db.query(stylesQuery, [productId], (error, stylesResults) => {
         if (error) {
@@ -56,56 +87,8 @@ module.exports = {
           return;
         }
 
-        // console.log('what are these styles: ', stylesResults)
         const styles = stylesResults.rows;
-        const stylePromises = styles.map((style) => {
-          const styleId = style.id;
-          return new Promise((resolve, reject) => {
-            db.query(photosQuery, [styleId], (error, photosResults) => {
-              if (error) {
-                reject(error);
-                return;
-              }
-
-              const photos = photosResults.rows.map((photo) => ({
-                thumbnail_url: photo.thumbnail_url,
-                url: photo.regular_url
-              }));
-
-              db.query(skusQuery, [styleId], (error, skusResults) => {
-                if (error) {
-                  reject(error);
-                } else {
-                  const skus = {};
-                  skusResults.rows.forEach((sku) => {
-                    skus[sku.id] = {
-                      quantity: sku.quantity,
-                      size: sku.size,
-                    };
-                  });
-
-                  resolve({
-                    style_id: styleId,
-                    name: style.style_name,
-                    original_price: style.original_price,
-                    sale_price: style.sale_price,
-                    'default?': style.isdefault,
-                    photos,
-                    skus
-                  });
-                }
-              });
-            });
-          });
-        });
-
-        Promise.all(stylePromises)
-          .then((stylesData) => {
-            resolve(stylesData);
-          })
-          .catch((error) => {
-            reject(error);
-          });
+        resolve(styles);
       });
     });
   },

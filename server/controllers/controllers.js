@@ -31,7 +31,7 @@ module.exports = {
         results: styles
       });
     })
-    .catch((error) => {s
+    .catch((error) => {
       console.log(error);
       res.status(500).json({ error: 'Internal server error' });
     });
