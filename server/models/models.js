@@ -12,45 +12,33 @@ module.exports = {
     return db.query(query);
   },
 
-  getSingleProductFromDb: (productId) => {
-    return new Promise((resolve, reject) => {
-      const productQuery = 'SELECT * FROM product WHERE id = $1';
-      const featuresQuery = 'SELECT feature, feature_value FROM features WHERE product_id = $1';
+  getSingleProductFromDb: async (productId) => {
+    const productQuery = `
+      SELECT
+        p.id AS id,
+        p.product_name AS name,
+        p.slogan,
+        p.product_description AS description,
+        p.category,
+        p.default_price::text AS default_price,
+        jsonb_agg(jsonb_build_object('feature', f.feature, 'value', f.feature_value)) AS features
+      FROM
+        product p
+        LEFT JOIN features f ON p.id = f.product_id
+      WHERE
+        p.id = $1
+      GROUP BY
+        p.id, p.product_name, p.product_description, p.slogan, p.category, p.default_price
+    `;
 
-      db.query(productQuery, [productId], (error, productResults) => {
-        if (error) {
-          reject(error);
-          return;
-        }
+    try {
+      const productResult = await db.query(productQuery, [productId]);
+      const productRow = productResult.rows[0];
 
-        const productRow = productResults.rows[0]; // productResults is an object with a row's property
-
-        db.query(featuresQuery, [productId], (error, featuresResults) => {
-          if (error) {
-            reject(error);
-          } else {
-            console.log('success from getSingleProductFromDb')
-            const features = featuresResults.rows.map((row) => ({
-              feature: row.feature,
-              value: row.feature_value,
-            }));
-
-            //construct shape to send back to client
-            const product = {
-              id: productRow.id,
-              name: productRow.product_name,
-              description: productRow.product_description,
-              slogan: productRow.slogan,
-              category: productRow.category,
-              default_price: `${productRow.default_price}`,
-              features: features,
-            };
-
-            resolve(product);
-          }
-        });
-      });
-    });
+      return productRow;
+    } catch (error) {
+      throw error;
+    }
   },
 
   getStylesFromDb: async (productId) => {
@@ -97,20 +85,15 @@ module.exports = {
     }
   },
 
-  getRelatedFromDb: (productId) => {
-    return new Promise((resolve, reject) => {
-      const relatedQuery = 'SELECT related_product_id FROM related WHERE current_product_id = $1';
-      db.query(relatedQuery, [productId], (err, relatedResults) => {
-        if (err) {
-          reject(err);
-          return;
-        }
+  getRelatedFromDb: async (productId) => {
+    const queryString = `SELECT jsonb_agg(related_product_id) FROM related WHERE current_product_id = $1`;
 
-        const relatedProducts = relatedResults.rows.map((row) => row.related_product_id);
-        resolve(relatedProducts);
-
-      })
-    })
+    try {
+      const relatedResults = await db.query(queryString, [productId]);
+      return relatedResults.rows[0].jsonb_agg;
+    } catch (error) {
+      throw error;
+    }
   }
 }
 
