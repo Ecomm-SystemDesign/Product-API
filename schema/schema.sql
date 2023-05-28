@@ -51,14 +51,10 @@ CREATE TABLE related (
 
 CREATE INDEX idx_features_product_id ON features (product_id);
 
--- Index for styles table
 CREATE INDEX idx_styles_product_id ON styles (product_id);
 
--- Index for photos table
 CREATE INDEX idx_photos_style_id ON photos (style_id);
 
--- Index for skus table
 CREATE INDEX idx_skus_style_id ON skus (style_id);
 
--- Index for related table
 CREATE INDEX idx_related_current_product_id ON related (current_product_id);

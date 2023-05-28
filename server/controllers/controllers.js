@@ -49,16 +49,13 @@ module.exports = {
     const { product_id } = req.params;
 
     getStylesFromDb(product_id)
-    .then((styles) => {
-      res.status(200).json({
-        product_id,
-        results: styles
+      .then((styles) => {
+        res.status(200).json(styles);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json({ error: 'Internal server error' });
       });
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(500).json({ error: 'Internal server error' });
-    });
   },
 
   getRelated: (req, res) => {

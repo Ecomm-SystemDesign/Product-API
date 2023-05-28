@@ -53,9 +53,8 @@ module.exports = {
     });
   },
 
-  getStylesFromDb: (productId) => {
-    return new Promise((resolve, reject) => {
-      const stylesQuery = `
+  getStylesFromDb: async (productId) => {
+    const stylesQuery = `
       SELECT
         s.id AS style_id,
         s.style_name AS name,
@@ -63,18 +62,16 @@ module.exports = {
         s.sale_price,
         s.isdefault AS "default?",
         (
-          SELECT json_agg(
-            json_build_object(
-              'thumbnail_url', p.thumbnail_url,
-              'url', p.regular_url
-            )
-          )
+          SELECT jsonb_agg(DISTINCT jsonb_build_object(
+            'thumbnail_url', p.thumbnail_url,
+            'url', p.regular_url
+          ))
           FROM photos p
           WHERE p.style_id = s.id
         ) AS photos,
-        json_object_agg(
+        jsonb_object_agg(
           sku.id,
-          json_build_object(
+          jsonb_build_object(
             'quantity', sku.quantity,
             'size', sku.size
           )
@@ -82,24 +79,22 @@ module.exports = {
       FROM
         styles s
         JOIN skus sku ON s.id = sku.style_id
+        LEFT JOIN photos p ON p.style_id = s.id
       WHERE
         s.product_id = $1
       GROUP BY
         s.id
       ORDER BY
         s.id ASC
-      `;
+    `;
 
-      db.query(stylesQuery, [productId], (error, stylesResults) => {
-        if (error) {
-          reject(error);
-          return;
-        }
-
-        const styles = stylesResults.rows;
-        resolve(styles);
-      });
-    });
+    try {
+      const stylesResults = await db.query(stylesQuery, [productId]);
+      const styles = stylesResults.rows;
+      return { product_id: productId, results: styles };
+    } catch (error) {
+      throw error;
+    }
   },
 
   getRelatedFromDb: (productId) => {
