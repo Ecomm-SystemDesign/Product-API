@@ -6,7 +6,7 @@ const pool = new Pool({
   host: 'localhost',
   database: 'products',
   password: process.env.password || '',
-  port: 5432
+  port: process.env.port || 5432
 });
 
 pool.connect()
