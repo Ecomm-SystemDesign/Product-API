@@ -1,0 +1,12 @@
+{"v":0,"level":30,"name":"newrelic","hostname":"DESKTOP-PEU8R76","pid":8714,"time":"2023-05-30T18:12:10.600Z","msg":"Using New Relic for Node.js. Agent version: 10.1.2; Node version: v16.19.1."}
+{"v":0,"level":30,"name":"newrelic","hostname":"DESKTOP-PEU8R76","pid":8714,"time":"2023-05-30T18:12:10.653Z","msg":"Using LegacyContextManager"}
+{"v":0,"level":30,"name":"newrelic","hostname":"DESKTOP-PEU8R76","pid":8714,"time":"2023-05-30T18:12:10.655Z","msg":"Adding destroy hook to clean up unresolved promises.","component":"async_hooks"}
+{"v":0,"level":30,"name":"newrelic","hostname":"DESKTOP-PEU8R76","pid":8714,"time":"2023-05-30T18:12:10.670Z","msg":"Agent state changed from stopped to starting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"DESKTOP-PEU8R76","pid":8714,"time":"2023-05-30T18:12:10.674Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"DESKTOP-PEU8R76","pid":8714,"time":"2023-05-30T18:12:10.674Z","msg":"Agent state changed from starting to connecting."}
+{"v":0,"level":30,"name":"newrelic","hostname":"DESKTOP-PEU8R76","pid":8714,"time":"2023-05-30T18:12:12.883Z","msg":"Agent state changed from connecting to connected."}
+{"v":0,"level":30,"name":"newrelic","hostname":"DESKTOP-PEU8R76","pid":8714,"time":"2023-05-30T18:12:12.883Z","msg":"Connected to collector.newrelic.com:443 with agent run ID BcnmF8WbaSycADxeyE8a6dtkdjzoAAgBAAAnIQEAACIKAgRPGvP-AwAGMTAuMS4yAA9ERVNLVE9QLVBFVThSNzYACVNEQ19qZXJyeQ.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"DESKTOP-PEU8R76","pid":8714,"time":"2023-05-30T18:12:12.883Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/3956424/applications/1327166462","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"DESKTOP-PEU8R76","pid":8714,"time":"2023-05-30T18:12:12.884Z","msg":"Valid event_harvest_config received. Updating harvest cycles. {\"report_period_ms\":5000,\"harvest_limits\":{\"error_event_data\":8,\"log_event_data\":833,\"analytic_event_data\":833,\"custom_event_data\":250}}"}
+{"v":0,"level":30,"name":"newrelic","hostname":"DESKTOP-PEU8R76","pid":8714,"time":"2023-05-30T18:12:12.886Z","msg":"Agent state changed from connected to started."}
+{"v":0,"level":30,"name":"newrelic","hostname":"DESKTOP-PEU8R76","pid":8714,"time":"2023-05-30T18:12:13.887Z","msg":"Starting initial 1000ms harvest."}
