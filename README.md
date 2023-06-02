@@ -1,4 +1,4 @@
-# System Design Capstone
+# SDC Product-API
 
 A backend server application that provides an API for managing product information in an ecommerce system. This API supports an existing retail web application with a modernized system able to withstand web scale traffic loads up to 3000 requests per second. As part of my team's strategy, we decomposed the pre-existing API into three constituent services: Products, Questions/Answers, and Reviews. The focus of this portion of the project is the Product section, which serves four distinct endpoints and retrieves data from six PostgreSQL tables.
 
