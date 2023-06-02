@@ -1,6 +1,6 @@
 # System Design Capstone
 
-A backend server application that provides an API for managing product information in an ecommerce system. This API supports an existing retail web application with a modernized system able to withstand web scale traffic loads up to 3000 requests per second.
+A backend server application that provides an API for managing product information in an ecommerce system. This API supports an existing retail web application with a modernized system able to withstand web scale traffic loads up to 3000 requests per second. As part of my team's strategy, we decomposed the pre-existing API into three constituent services: Products, Questions/Answers, and Reviews. The focus of this portion of the project is the Product section, which serves four distinct endpoints and retrieves data from six PostgreSQL tables.
 
 ## Table of Contents
 
@@ -8,13 +8,13 @@ A backend server application that provides an API for managing product informati
 2. [Technologies](#technologies)
 3. [API Endpoints](#api-endpoints)
 4. [Getting Started](#getting-started)
-5. [Authors and Contributors](#authors-and-contributors)
+5. [Code Highlight](#authors-and-contributors)
 6. [Wins and Improvements](#wins-and-improvements)
 
 
 ## Description
 
-This API is built using the Node.js and Express.js frameworks and utilizes a PostgreSQL database to serve a legacy codebase inherited by my team. As part of our strategy, we decomposed the pre-existing API into three separate services: Products, Questions/Answers, and Reviews. The focus of this portion of the project is the Product section, which serves four distinct endpoints and retrieves data from six PostgreSQL tables.
+This API server is responsible for handling requests related to product data. It utilizes Node.js and Express.js to create a robust and scalable server-side application. PostgreSQL is used as the underlying database to store and retrieve the necessary data. The project follows a microservices architecture, with the Product service focusing on serving product-related endpoints.
 
 
 ## Technologies
@@ -104,6 +104,6 @@ credit @[jerryrenn](https://github.com/jerryrenn)
 
 ## Wins and Improvements
 
-The main win of the FEC-Ecommerce project was that it was able to handle a high volume of traffic without any issues. The project was also designed to be responsive desktop devices.
+By horizontally scaling this deployed API to 3 separate AWS EC2 instances and implementing NGINX load balancing and caching, we were well able to surpass the client's throughput goal of 100 requests per second. Under a load of 3000 virtual users (VUs) at maximum over a duration of 30 seconds, this system is able to maintain a response time below 250 milliseconds (ms) for all four endpoints, with an error rate of less than 0.05% while handling a throughput up to 3000 RPS.
 
-Currently, the app is not designed for mobile. An improvement would be to introduce a mobile compatible layout.
+Additional optimization can be implemented, particularly with Redis caching in the future.
