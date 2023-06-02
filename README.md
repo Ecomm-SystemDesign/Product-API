@@ -6,10 +6,11 @@ A backend server application that provides an API for managing product informati
 
 1. [Description](#description)
 2. [Technologies](#technologies)
-3. [API Endpoints](#api-endpoints)
-4. [Getting Started](#getting-started)
-5. [Code Highlight](#authors-and-contributors)
-6. [Wins and Improvements](#wins-and-improvements)
+3. [Visuals](#visuals)
+4. [API Endpoints](#api-endpoints)
+5. [Getting Started](#getting-started)
+6. [Code Highlight](#authors-and-contributors)
+7. [Wins and Improvements](#wins-and-improvements)
 
 
 ## Description
@@ -29,6 +30,10 @@ This API server is responsible for handling requests related to product data. It
 - [Artillery](https://www.artillery.io/)
 - [Loader.io](https://loader.io/)
 
+## Visuals
+
+![storeFront Solutions Home Page](./storeFront_Solutions_Homepage.png)
+![storeFront Solutions Home Page](./storeFront_homepage.gif)
 
 ## API Endpoints
 
