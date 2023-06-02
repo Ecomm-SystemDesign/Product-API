@@ -8,8 +8,8 @@ A backend server application that provides an API for managing product informati
 2. [Technologies](#technologies)
 3. [API Endpoints](#api-endpoints)
 4. [Getting Started](#getting-started)
-5. [Contributing](#contributing)
-6. [License](#license)
+5. [Authors and Contributors](#authors-and-contributors)
+6. [Wins and Improvements](#wins-and-improvements)
 
 
 ## Description
@@ -101,3 +101,9 @@ This portion of the code resides in the models.js file and is responsible for re
   },
 ```
 credit @[jerryrenn](https://github.com/jerryrenn)
+
+## Wins and Improvements
+
+The main win of the FEC-Ecommerce project was that it was able to handle a high volume of traffic without any issues. The project was also designed to be responsive desktop devices.
+
+Currently, the app is not designed for mobile. An improvement would be to introduce a mobile compatible layout.
