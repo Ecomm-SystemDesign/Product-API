@@ -9,7 +9,7 @@ A backend server application that provides an API for managing product informati
 3. [Visuals](#visuals)
 4. [API Endpoints](#api-endpoints)
 5. [Getting Started](#getting-started)
-6. [Code Highlight](#authors-and-contributors)
+6. [Code Highlight](#code-highlight)
 7. [Wins and Improvements](#wins-and-improvements)
 
 
