@@ -53,7 +53,7 @@ To run the ProductAPI Server locally, follow these steps:
 3. Install dependencies: `npm install`.
 4. Rename the `.env.example` file to `.env` and update the configuration settings.
 5. Start the server in development mode: `npm run server-dev`.
-6. The server should now be running on `http://localhost:3000`.
+6. `artillery run script.yml` & `k6 run script.js` to run local stress testing.
 
 You can use tools like cURL or Postman to test the API endpoints.
 
