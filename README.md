@@ -52,5 +52,52 @@ To run the ProductAPI Server locally, follow these steps:
 
 You can use tools like cURL or Postman to test the API endpoints.
 
+## Code Highlight
 
+This portion of the code resides in the models.js file and is responsible for retrieving and formatting data through SQL database queries. By consolidating multiple queries and performing data transformation in the database instead of in the server, HTTP requests times are significantly faster (38.3% average reduction).
+```
+  getStylesFromDb: async (productId) => {
+    const stylesQuery = `
+      SELECT
+        s.id AS style_id,
+        s.style_name AS name,
+        s.original_price,
+        s.sale_price,
+        s.isdefault AS "default?",
+        (
+          SELECT jsonb_agg(DISTINCT jsonb_build_object(
+            'thumbnail_url', p.thumbnail_url,
+            'url', p.regular_url
+          ))
+          FROM photos p
+          WHERE p.style_id = s.id
+        ) AS photos,
+        jsonb_object_agg(
+          sku.id,
+          jsonb_build_object(
+            'quantity', sku.quantity,
+            'size', sku.size
+          )
+        ) AS skus
+      FROM
+        styles s
+        JOIN skus sku ON s.id = sku.style_id
+        LEFT JOIN photos p ON p.style_id = s.id
+      WHERE
+        s.product_id = $1
+      GROUP BY
+        s.id
+      ORDER BY
+        s.id ASC
+    `;
 
+    try {
+      const stylesResults = await db.query(stylesQuery, [productId]);
+      const styles = stylesResults.rows;
+      return { product_id: productId, results: styles };
+    } catch (error) {
+      throw error;
+    }
+  },
+```
+credit @[jerryrenn]
