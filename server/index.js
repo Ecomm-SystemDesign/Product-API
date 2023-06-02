@@ -1,12 +1,12 @@
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const {getProducts, getProduct, getStyles, getRelated} = require('./controllers/controllers.js')
 
 
 const app = express();
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 
 
 app.use(express.urlencoded({ extended: true }));
