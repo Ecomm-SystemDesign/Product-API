@@ -32,8 +32,8 @@ This API server is responsible for handling requests related to product data. It
 
 ## Visuals
 
-![storeFront Solutions Home Page](./storeFront_Solutions_Homepage.png)
-![storeFront Solutions Home Page](./storeFront_homepage.gif)
+![storeFront Solutions Home Page](./loader.io-test.png)
+
 
 ## API Endpoints
 
