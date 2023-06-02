@@ -100,4 +100,4 @@ This portion of the code resides in the models.js file and is responsible for re
     }
   },
 ```
-credit @[jerryrenn]
+credit @[jerryrenn](https://github.com/jerryrenn)
