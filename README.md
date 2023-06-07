@@ -59,7 +59,7 @@ You can use tools like cURL or Postman to test the API endpoints.
 
 ## Code Highlight
 
-This portion of the code resides in the models.js file and is responsible for retrieving and formatting data through SQL database queries. By consolidating multiple queries and performing data transformation in the database instead of in the server, HTTP requests times are significantly faster (84.3% average response time reduction).
+This portion of the code resides in the models.js file and is responsible for retrieving and formatting data through SQL database queries. By consolidating multiple queries, indexing and performing data transformation in the database instead of in the server, HTTP requests times are significantly faster (3400ms to 24ms in average response time).
 ```
   getStylesFromDb: async (productId) => {
     const stylesQuery = `
