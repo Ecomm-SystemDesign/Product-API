@@ -20,15 +20,15 @@ This API server is responsible for handling requests related to product data. It
 
 ## Technologies
 
-![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=node.js&logoColor=white) [Node.js](https://nodejs.org/)
-![Express.js](https://img.shields.io/badge/-Express.js-000000?style=flat-square&logo=express&logoColor=white) [Express.js](https://expressjs.com/)
-![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white) [MongoDB](https://www.mongodb.com/)
-![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white) [PostgreSQL](https://www.postgresql.org/)
-![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white) [Docker](https://www.docker.com/)
-![nginx](https://img.shields.io/badge/-nginx-269539?style=flat-square&logo=nginx&logoColor=white) [nginx](https://nginx.org/)
+![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=node.js&logoColor=white) 
+![Express.js](https://img.shields.io/badge/-Express.js-000000?style=flat-square&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![nginx](https://img.shields.io/badge/-nginx-269539?style=flat-square&logo=nginx&logoColor=white)
 ![k6](https://img.shields.io/badge/-k6-000000?style=flat-square&logo=k6&logoColor=white) [k6](https://k6.io/)
-![Artillery](https://img.shields.io/badge/-Artillery-000000?style=flat-square&logo=artillery&logoColor=white) [Artillery](https://www.artillery.io/)
-![Loader.io](https://img.shields.io/badge/-Loader.io-000000?style=flat-square&logo=loaderio&logoColor=white) [Loader.io](https://loader.io/)
+![Artillery](https://img.shields.io/badge/-Artillery-000000?style=flat-square&logo=artillery&logoColor=white)
+![Loader.io](https://img.shields.io/badge/-Loader.io-000000?style=flat-square&logo=loaderio&logoColor=white)
 
 ## Visuals
 
