@@ -26,7 +26,7 @@ This API server is responsible for handling requests related to product data. It
 ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white)
 ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![nginx](https://img.shields.io/badge/-nginx-269539?style=flat-square&logo=nginx&logoColor=white)
-![k6](https://img.shields.io/badge/-k6-000000?style=flat-square&logo=k6&logoColor=white) [k6](https://k6.io/)
+![k6](https://img.shields.io/badge/-k6-000000?style=flat-square&logo=k6&logoColor=white)
 ![Artillery](https://img.shields.io/badge/-Artillery-000000?style=flat-square&logo=artillery&logoColor=white)
 ![Loader.io](https://img.shields.io/badge/-Loader.io-000000?style=flat-square&logo=loaderio&logoColor=white)
 
